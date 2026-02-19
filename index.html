@@ -13,7 +13,6 @@
   font-family: Arial, sans-serif;
 }
 
-/* FUNDO IGUAL AO SITE PRINCIPAL */
 body{
   background-image:url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80");
   background-size:cover;
@@ -23,7 +22,6 @@ body{
   color:white;
 }
 
-/* PELÍCULA */
 body::before{
   content:"";
   position:fixed;
@@ -32,7 +30,6 @@ body::before{
   z-index:-1;
 }
 
-/* HEADER */
 header{
   text-align:center;
   padding:30px 20px;
@@ -45,14 +42,12 @@ header h1{
   font-size:32px;
 }
 
-/* CONTAINER */
 .container{
   max-width:1100px;
   margin:auto;
   padding:50px 20px;
 }
 
-/* CARD */
 .sobre-card{
   display:flex;
   gap:40px;
@@ -60,17 +55,22 @@ header h1{
   border-radius:20px;
   padding:30px;
   box-shadow:0 0 20px rgba(0,0,0,.6);
-  animation:fadeIn 1.5s ease;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
 }
 
-/* IMAGEM */
+.sobre-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
 .sobre-card img{
   width:320px;
   border-radius:15px;
   object-fit:cover;
 }
 
-/* TEXTO */
 .sobre-texto h2{
   color:#eaeaea;
   margin-bottom:15px;
@@ -83,7 +83,6 @@ header h1{
   font-size:15px;
 }
 
-/* BOTÃO */
 .voltar{
   text-align:center;
   margin-top:40px;
@@ -105,13 +104,6 @@ header h1{
   transform:scale(1.05);
 }
 
-/* ANIMAÇÃO */
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(40px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* RESPONSIVO */
 @media(max-width:900px){
   .sobre-card{
     flex-direction:column;
@@ -135,48 +127,52 @@ header h1{
 
 <div class="container">
 
-  <div class="sobre-card">
+  <div class="sobre-card reveal">
 
-    <!-- IMAGEM À ESQUERDA -->
     <img src="https://i.imgur.com/uNl6YNa.jpeg" alt="Foto Gustavo">
 
-    <!-- TEXTO À DIREITA -->
     <div class="sobre-texto">
       <h2>Minha trajetória profissional</h2>
 
       <p>
         Atualmente trabalho com manutenção de máquinas de grande formato na área gráfica, função que conquistei
-        por meio da minha formação técnica em Mecatrônica. Essa experiência me proporcionou uma forte base em
-        raciocínio lógico, resolução de problemas e contato direto com tecnologia e automação.
+        por meio da minha formação técnica em Mecatrônica.
       </p>
 
       <p>
-        Com o passar do tempo, despertei grande interesse pela área de desenvolvimento de sistemas, o que me levou
-        a iniciar a graduação em Análise e Desenvolvimento de Sistemas (ADS). Desde então, venho me dedicando ao
-        aprendizado de tecnologias voltadas para o desenvolvimento web, com foco em HTML, CSS, JavaScript e
-        conceitos de Front-end e Full Stack.
+        Iniciei a graduação em Análise e Desenvolvimento de Sistemas (ADS) e venho me dedicando ao
+        aprendizado de HTML, CSS, JavaScript e conceitos de Front-end e Full Stack.
       </p>
 
       <p>
         Busco uma oportunidade profissional na área de desenvolvimento Full Stack, onde eu possa aplicar meus
-        conhecimentos, evoluir tecnicamente e contribuir com soluções eficientes e modernas. Tenho facilidade
-        para aprender novas tecnologias, gosto de desafios e estou sempre em busca de crescimento pessoal e
-        profissional.
+        conhecimentos, evoluir tecnicamente e contribuir com soluções eficientes.
       </p>
 
       <p>
-        Meu objetivo é unir minha experiência técnica com máquinas e automação à área de programação, criando
-        soluções inteligentes, sistemas organizados e interfaces intuitivas para usuários e empresas.
+        Meu objetivo é unir minha experiência técnica com máquinas e automação à área de programação.
       </p>
     </div>
 
   </div>
 
   <div class="voltar">
-    <a href="index.html">⬅ Voltar ao Portfólio</a>
+     <a href="https://gustavosales2001.github.io/portf.html"> ⬅ Voltar ao Portfólio</a>
   </div>
 
 </div>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
