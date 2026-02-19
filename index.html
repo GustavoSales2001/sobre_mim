@@ -191,10 +191,17 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+  setTimeout(() => {
+  reveals.forEach(el => {
+    el.classList.add('show');
+  });
+}, 2000);
 </script>
 
 </body>
 </html>
+
 
 
 
